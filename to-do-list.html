@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-09b459cf485d4b1f3304947240314c05.css?vsn=d"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-duotone-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.6.0/css/sharp-light.css"
+    />
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+  <body class="bg-[#00bcff] flex justify-center">
+    <h1
+      class="text-2xl md:text-4xl text-[#000] font-bold text-center absolute top-[20px] mt-12 md:mt-0"
+    >
+      Things to Do
+    </h1>
+    <form
+      class="form mt-32 md:mt-20 shadow-md bg-[#7bf1a8] w-full max-w-[350px] md:max-w-[500px] rounded-lg flex flex-col"
+    >
+      <input
+        type="text"
+        class="input rounded-t-lg px-3 py-4 border-none text-xl"
+        placeholder="Enter your task"
+        autocomplete="off"
+      />
+      <ul class="list flex flex-col justify-center gap-4">
+        <!-- <li>
+          <i class="fas fa-check-square"></i>Buy Milk
+          <i class="fas fa-trash"></i>
+        </li>
+        <li class="checked">
+          <i class="fas fa-check-square"></i> Call David
+          <i class="fas fa-trash"></i>
+        </li> -->
+      </ul>
+    </form>
+    <div
+      class="absolute left-2 md:left-10 top-[30px] flex flex-col items-center"
+    >
+      <a href="index.html" class="text-xs"
+        ><i class="fa-solid fa-notes text-black text-xl md:text-2xl"></i
+      ></a>
+      <a href="index.html" class="font-bold text-xs"><p>Notes</p></a>
+    </div>
+    <script src="to-do-list.js"></script>
+  </body>
+</html>
