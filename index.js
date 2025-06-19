@@ -1,32 +1,34 @@
 const btnEl = document.getElementById("btn");
-const appEl = document.querySelector("#app");
-getNotes().forEach((notes) => {
-  const noteEl = createNoteElement(notes.id, notes.content);
+const appEl = document.getElementById("app");
+
+// পেজ লোডের সময় নোটগুলো দেখানো
+getNotes().forEach((note) => {
+  const noteEl = createNoteElement(note.id, note.content);
   appEl.insertBefore(noteEl, btnEl);
 });
+
 function createNoteElement(id, content) {
   const divElement = document.createElement("div");
-  appEl.appendChild(divElement);
   divElement.classList.add("text-area-wrapper");
-  divElement.innerHTML = ` <i class="fa-solid fa-trash"></i>`;
+  divElement.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+
   const trashBtn = divElement.querySelector(".fa-trash");
   const textElement = document.createElement("textarea");
   textElement.classList.add("note");
   textElement.placeholder = "Empty Note";
   textElement.value = content;
+
   divElement.appendChild(textElement);
+
   trashBtn.addEventListener("click", () => {
     divElement.remove();
-    deletNote(id);
+    deleteNote(id);
   });
-  function deletNote(id) {
-    const notes = getNotes();
-    const updateNote = notes.filter((note) => note.id !== id);
-    saveNote(updateNote);
-  }
+
   textElement.addEventListener("input", () => {
     updateNote(id, textElement.value);
   });
+
   return divElement;
 }
 
@@ -41,10 +43,35 @@ function addNote() {
   notes.push(noteObj);
   saveNote(notes);
 }
+
+function deleteNote(id) {
+  const notes = getNotes();
+  const updatedNotes = notes.filter((note) => note.id !== id);
+  saveNote(updatedNotes);
+}
+
+function updateNote(id, content) {
+  const notes = getNotes();
+  const target = notes.find((note) => note.id === id);
+  if (target) {
+    target.content = content;
+    saveNote(notes);
+  }
+}
+
 function saveNote(notes) {
   localStorage.setItem("note-app", JSON.stringify(notes));
 }
+
 function getNotes() {
-  return JSON.parse(localStorage.getItem("note-app") || "[]");
+  const notesJSON = localStorage.getItem("note-app");
+  if (!notesJSON) return [];
+  try {
+    return JSON.parse(notesJSON);
+  } catch (e) {
+    console.error("LocalStorage data corrupted", e);
+    return [];
+  }
 }
+
 btnEl.addEventListener("click", addNote);
