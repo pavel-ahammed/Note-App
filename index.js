@@ -1,7 +1,6 @@
 const btnEl = document.getElementById("btn");
 const appEl = document.getElementById("app");
 
-// পেজ লোডের সময় নোটগুলো দেখানো
 getNotes().forEach((note) => {
   const noteEl = createNoteElement(note.id, note.content);
   appEl.insertBefore(noteEl, btnEl);
